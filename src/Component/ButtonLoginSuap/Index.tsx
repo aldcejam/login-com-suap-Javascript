@@ -1,11 +1,9 @@
 import { useEffect, useState } from "react";
-import { useDateLoginSuap } from "../../context/DateLoginSuap";
-import { SuapClient } from "../../services/login-winth-suap/client";
-import { SuapApiSettings } from "../../services/login-winth-suap/settings";
+import { SuapClient } from "../../services/login-with-suap/client";
+import { SuapApiSettings } from "../../services/login-with-suap/settings";
 
 const ButtonLoginSuap = () => {
 
-    const { dataUserSuap, setDataUserSuap } = useDateLoginSuap();
 
     const NewSuapClient = SuapClient({
         authHost: SuapApiSettings.SUAP_URL,
@@ -21,11 +19,6 @@ const ButtonLoginSuap = () => {
     const SaveDataLoginSuap = (response: any) => {
         setResourceResponse(JSON.stringify(response.data));
     };
-    useEffect(() => {
-        setDataUserSuap(resourceResponse)
-    }, [resourceResponse])
-
-    console.log(dataUserSuap)
 
 
     useEffect(() => {
