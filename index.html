@@ -12,7 +12,8 @@
     <button id="button-login">Login com suap</button>
     <button id="button-logout">logout com suap</button>
 
-    <p id="content"></p>
+    <p id="content">
+    </p>
     
     <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
     <script type="module">
@@ -20,13 +21,22 @@
 
         const buttonLogin = document.querySelector('#button-login')
         const buttonLogout = document.querySelector('#button-logout')
+
+        if (SuapClient().isAuthenticated()) {
+            buttonLogin.style.display = 'none'
+            buttonLogout.style.display = 'block'
+        } else {
+            buttonLogin.style.display = 'block'
+            buttonLogout.style.display = 'none'
+        }
         
         buttonLogin.addEventListener('click', () => SuapClient().Login())
         buttonLogout.addEventListener('click', () => SuapClient().Logout())
         
         const content = document.querySelector('#content')
-         
-        console.log(SuapClient().userData)
+
+        content.innerHTML = JSON.stringify(await SuapClient().userData)
+        console.log(await SuapClient().userData)
     </script>
 
 </body>
