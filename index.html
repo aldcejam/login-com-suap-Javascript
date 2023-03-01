@@ -29,15 +29,13 @@
             buttonLogout.style.display = 'none'
         }
 
-        buttonLogin.addEventListener('click', () => SuapClient().Login())
-        buttonLogout.addEventListener('click', () => SuapClient().Logout())
+        const suapClient = await SuapClient
+
+        buttonLogin.addEventListener('click', () => suapClient().Login())
+        buttonLogout.addEventListener('click', () => suapClient().Logout())
 
         const content = document.querySelector('#content')
-
-        console.log(SuapClient().userData)
-
-        content.innerHTML = JSON.stringify(await SuapClient().userData)
-        console.log(await SuapClient().userData)
+        content.innerHTML = JSON.stringify(await suapClient().userData) 
     </script>
 
 </body>

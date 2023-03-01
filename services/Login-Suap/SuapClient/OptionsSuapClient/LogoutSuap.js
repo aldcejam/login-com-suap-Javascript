@@ -1,4 +1,4 @@
-import { SuapApiSettings } from "../../ConfigApi/SuapApiSettings.js";
+import { SuapApiSettings } from "../../authSettings/SuapApiSettings.js";
 import { RemoveSlashIfLastLetter } from "../CheckVariables/RemoveSlashIfLastLetter.js";
 
 

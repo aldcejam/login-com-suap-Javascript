@@ -5,7 +5,7 @@ import { ExtractToken } from "./SuapClient/StratifiedURLSpecification/ExtractTok
 import { ExtractScope } from "./SuapClient/StratifiedURLSpecification/ExtractScope.js";
  
 import { GetUserData } from "./SuapClient/ManageUserData/FetchUserData.js";
-import { GetLoginURL } from "./ConfigApi/LoginURL.js";
+import { GetLoginURL } from "./authSettings/LoginURL.js";
 import { LogoutSuap } from "./SuapClient/OptionsSuapClient/LogoutSuap.js";
 import { ExtractDuration } from "./SuapClient/StratifiedURLSpecification/ExtractDuration.js";
 import { CheckUserAndUserData } from "./SuapClient/CheckVariables/CheckUserAndUserData.js";
@@ -27,7 +27,7 @@ export const SuapClient = () => {
     };
 
     const userLogged = isAuthenticated();
-    
+
     const userDataNotChecked = GetUserData(token.getValue());
     const userData = CheckUserAndUserData(userDataNotChecked, userLogged);
     
