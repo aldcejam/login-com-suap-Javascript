@@ -1,12 +1,9 @@
-import { SuapApiSettings } from "./ConfigApi/SuapApiSettings.js";
-
+ 
 import { TokenSuap } from "./TokenSuap.js";
 
 import { ExtractToken } from "./SuapClient/StratifiedURLSpecification/ExtractToken.js";
 import { ExtractScope } from "./SuapClient/StratifiedURLSpecification/ExtractScope.js";
-
-import { RemoveSlashIfLastLetter } from "./SuapClient/CheckVariables/RemoveSlashIfLastLetter.js";
-
+ 
 import { GetUserData } from "./SuapClient/ManageUserData/FetchUserData.js";
 import { GetLoginURL } from "./ConfigApi/LoginURL.js";
 import { LogoutSuap } from "./SuapClient/OptionsSuapClient/LogoutSuap.js";
@@ -18,17 +15,10 @@ export const SuapClient = () => {
         ExtractToken(),
         ExtractDuration(),
         ExtractScope(),
-    );
-
-    let authHost = SuapApiSettings.AUTH_HOST;
-    authHost = RemoveSlashIfLastLetter(authHost);
-
-    const clientID = SuapApiSettings.CLIENT_ID;
-    const redirectURL = SuapApiSettings.REDIRECT_URL;
-
+    ); 
 
     const Login = () => {
-        window.location.href = GetLoginURL(clientID, redirectURL);
+        window.location.href = GetLoginURL();
     };
     const Logout = () => LogoutSuap(token)
 
@@ -36,9 +26,11 @@ export const SuapClient = () => {
         return token.IsSuapTokenExist();
     };
 
-    const userDataNotChecked = GetUserData(token.getValue());
     const userLogged = isAuthenticated();
+    
+    const userDataNotChecked = GetUserData(token.getValue());
     const userData = CheckUserAndUserData(userDataNotChecked, userLogged);
+    
 
     return {
         Login,

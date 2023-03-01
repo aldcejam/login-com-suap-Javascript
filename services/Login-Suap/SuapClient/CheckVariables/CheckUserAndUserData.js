@@ -27,10 +27,7 @@ const CheckIfUserLogged = (userLogged) => {
     return false;
 };
 const CheckUserConnectedButDataUndefined = (userData, userLogged) => {
-    if (userLogged && !userData) {
-        /* algumas vezes os dados do usuario não são pegos de primeira,
-        o que faz ser necessário recarregar a página para que os dados sejam
-        carregados corretamente*/
+    if (userLogged && !userData) { 
         window.location.reload()
     }
     return false;

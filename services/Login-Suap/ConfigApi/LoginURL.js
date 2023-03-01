@@ -1,6 +1,8 @@
 import { SuapApiSettings } from "./SuapApiSettings.js";
 
-export const GetLoginURL = (clientID, redirectURL) => {
+export const GetLoginURL = () => {
+    const clientID = SuapApiSettings.CLIENT_ID;
+    const redirectURL = SuapApiSettings.REDIRECT_URL;
     const scope = SuapApiSettings.SCOPE;
     const authorizationURL = `${SuapApiSettings.AUTH_HOST}/o/authorize/`;
   

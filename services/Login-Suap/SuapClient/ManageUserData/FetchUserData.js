@@ -2,7 +2,7 @@ import { SuapApiSettings } from "../../ConfigApi/SuapApiSettings.js";
 
 export const GetUserData = async (tokenValue) => {
     if (!tokenValue) {
-        return
+        return;
     }
 
     const urlForGetUserData = SuapApiSettings.URL_FOR_GET_USERDATA;
@@ -18,13 +18,10 @@ export const GetUserData = async (tokenValue) => {
             Accept: "application/json",
         },
     });
-    
 
     if (!response.ok) {
-        return null
+        return null;
     }
 
-    
-    
     return await response.json();
 };
